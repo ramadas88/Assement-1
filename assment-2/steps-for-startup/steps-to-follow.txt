@@ -1,0 +1,19 @@
+# chmod +x start-ansible.sh
+
+# vi /etc/systemd/system/ansible.service
+[Unit]
+Description=ansible playbook startup
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/path/to/start-ansible.sh
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
+
+
+# systemctl daemon-reload
+# systemctl enable ansible.service
+# systemctl start ansible.service
